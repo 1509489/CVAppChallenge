@@ -5,8 +5,9 @@ import com.pixelart.cvappchallenge.network.NetworkService
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
+import javax.inject.Inject
 
-class HomePresenter(private val view: HomeContract.View, private val networkService: NetworkService):
+class HomePresenter @Inject constructor(private val view: HomeContract.View, private val networkService: NetworkService):
     HomeContract.Presenter {
     
     private val compositeDisposable = CompositeDisposable()
