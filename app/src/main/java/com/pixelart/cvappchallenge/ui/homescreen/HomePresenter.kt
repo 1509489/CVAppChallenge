@@ -21,7 +21,7 @@ class HomePresenter @Inject constructor(private val view: HomeContract.View, pri
                 .subscribe({response -> initCV(response)}, {error -> error?.message?.let { view.showError(it) } })
         )
     }
-    
+
     private fun initCV(cv: Cv){
         val phoneEmail = "${cv.phoneNumber}, ${cv.email}"
         val experienceSummary = (cv.experienceSummary).joinToString("\n\u2022","\u2022", "", -1, "")
