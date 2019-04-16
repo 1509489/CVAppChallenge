@@ -1,6 +1,5 @@
 package com.pixelart.cvappchallenge.ui.homescreen
 
-import com.pixelart.cvappchallenge.model.Cv
 
 interface HomeContract {
     interface View{
@@ -11,7 +10,7 @@ interface HomeContract {
     }
     
     interface Presenter{
-        fun getCV(cv: Cv)
+        fun getCV()
         fun onStop()
     }
 }

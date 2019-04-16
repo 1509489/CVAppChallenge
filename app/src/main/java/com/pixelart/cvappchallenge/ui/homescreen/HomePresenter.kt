@@ -12,7 +12,7 @@ class HomePresenter @Inject constructor(private val view: HomeContract.View, pri
     
     private val compositeDisposable = CompositeDisposable()
     
-    override fun getCV(cv: Cv) {
+    override fun getCV() {
         compositeDisposable.add(
             networkService.getCV()
                 .subscribeOn(Schedulers.io())
