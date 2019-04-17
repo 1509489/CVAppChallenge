@@ -2,7 +2,6 @@ package com.pixelart.cvappchallenge.ui.homescreen
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -42,13 +41,12 @@ class HomeActivity : AppCompatActivity(), HomeContract.View {
     }
     
     override fun showCVDetail(name: String, phoneEmail: String, experienceSummary: String,
-                              techSkills: String, workHistory: String, education: String, interest: String) {
+                              techSkills: String, education: String, interest: String) {
 
         tvName.text = name
         tvPhoneEmail.text = phoneEmail
         tvExperience.text = experienceSummary
         tvTechSkills.text = techSkills
-        //tvWorkHistory.text = workHistory
         tvEducation.text = education
         tvInterest.text = interest
     }
@@ -59,7 +57,6 @@ class HomeActivity : AppCompatActivity(), HomeContract.View {
 
     override fun showError(error: String) {
         Toast.makeText(this, error, Toast.LENGTH_SHORT).show()
-        Log.d("HOME", error)
     }
     
     override fun showMessage(message: String) {
