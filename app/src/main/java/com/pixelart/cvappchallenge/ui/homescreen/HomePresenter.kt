@@ -28,22 +28,8 @@ class HomePresenter @Inject constructor(private val view: HomeContract.View, pri
         val techSkills = cv.technicalSkills.joinToString("\n\u2022","\u2022", "", -1, "")
         val education = cv.education.joinToString("\n\u2022", "\u2022", "",-1, "")
         val interest = cv.interests.joinToString("\n\u2022", "\u2022", "",-1, "")
-        val workList: List<String> = ArrayList()
-        
-        for (work in 0 until cv.workHistory.size){
-            val companyName = cv.workHistory[work].companyName
-            val role = cv.workHistory[work].role
-            val fromTo = "${cv.workHistory[work].from} - ${cv.workHistory[work].to}"
-            val appDescription = cv.workHistory[work].appDescription
-            val mainResponsibilities = (cv.workHistory[work].mainResponsibilities).joinToString("\n\u2022", "\u2022", "",-1, "")
-            
-            val output = "$companyName \n$role \n$fromTo \n\n$appDescription \n\n$mainResponsibilities"
-            (workList as ArrayList).add(output)
-        }
-        
-        val workHistory = workList.joinToString("\n\n", "", "",-1, "")
-        
-        view.showCVDetail(cv.name, phoneEmail,experienceSummary, techSkills, workHistory, education, interest)
+
+        view.showCVDetail(cv.name, phoneEmail,experienceSummary, techSkills, education, interest)
         view.showWorkHistory(cv.workHistory)
     }
     
