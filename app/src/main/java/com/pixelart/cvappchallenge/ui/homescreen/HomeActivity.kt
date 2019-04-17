@@ -31,7 +31,7 @@ class HomeActivity : AppCompatActivity(), HomeContract.View {
         tvPhoneEmail.text = phoneEmail
         tvExperience.text = experienceSummary
         tvTechSkills.text = techSkills
-        tvWorkHistory.text = workHistory
+        //tvWorkHistory.text = workHistory
         tvEducation.text = education
         tvInterest.text = interest
     }
