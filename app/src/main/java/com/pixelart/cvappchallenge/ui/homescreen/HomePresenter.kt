@@ -44,6 +44,7 @@ class HomePresenter @Inject constructor(private val view: HomeContract.View, pri
         val workHistory = workList.joinToString("\n\n", "", "",-1, "")
         
         view.showCVDetail(cv.name, phoneEmail,experienceSummary, techSkills, workHistory, education, interest)
+        view.showWorkHistory(cv.workHistory)
     }
     
     override fun onStop() {
