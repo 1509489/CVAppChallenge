@@ -2,6 +2,7 @@ package com.pixelart.cvappchallenge.ui.homescreen
 
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.verify
+import com.nhaarman.mockitokotlin2.verifyNoMoreInteractions
 import com.nhaarman.mockitokotlin2.whenever
 import com.pixelart.cvappchallenge.model.Cv
 import com.pixelart.cvappchallenge.network.NetworkService
@@ -14,6 +15,7 @@ import org.junit.Before
 import org.junit.Test
 
 import org.junit.BeforeClass
+import org.mockito.ArgumentMatchers.anyList
 import org.mockito.ArgumentMatchers.anyString
 import java.util.*
 import java.util.concurrent.Executor
@@ -21,7 +23,8 @@ import java.util.concurrent.Executor
 class HomePresenterTest {
 
     private lateinit var presenter: HomePresenter
-    private lateinit var cv: Cv
+    private val cv = Cv(Collections.emptyList(), "", Collections.emptyList(), Collections.emptyList(), "",
+        "", Collections.emptyList(), Collections.emptyList())
 
     private val view: HomeContract.View = mock()
     private val networkService: NetworkService = mock()
@@ -43,15 +46,15 @@ class HomePresenterTest {
     @Before
     fun setUp() {
         presenter = HomePresenter(view, networkService)
-        cv = Cv(Collections.emptyList(), "", Collections.emptyList(), Collections.emptyList(), "",
-            "", Collections.emptyList(), Collections.emptyList())
     }
 
     @Test
-    fun getCV() {
+    fun getCVSuccess() {
         whenever(networkService.getCV()).thenReturn(Single.just(cv))
         presenter.getCV()
         verify(view).showCVDetail(anyString(), anyString(), anyString(), anyString(), anyString(), anyString())
+        verify(view).showWorkHistory(anyList())
+        verifyNoMoreInteractions(view)
     }
 
     @Test
@@ -59,5 +62,6 @@ class HomePresenterTest {
         whenever(networkService.getCV()).thenReturn(Single.error(Throwable()))
         presenter.getCV()
         Throwable().message?.let { verify(view).showError(it) }
+        verifyNoMoreInteractions(view)
     }
 }
