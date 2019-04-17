@@ -7,6 +7,7 @@ data class WorkHistory(
     val appDescription: String,
     @SerializedName("company_name")
     val companyName: String,
+    val logo: String,
     val from: String,
     @SerializedName("main_responsibilities")
     val mainResponsibilities: List<String>,
