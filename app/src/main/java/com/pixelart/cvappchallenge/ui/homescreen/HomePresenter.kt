@@ -37,7 +37,7 @@ class HomePresenter @Inject constructor(private val view: HomeContract.View, pri
             val appDescription = cv.workHistory[work].appDescription
             val mainResponsibilities = (cv.workHistory[work].mainResponsibilities).joinToString("\n\u2022", "\u2022", "",-1, "")
             
-            val output = "$companyName \n\n$role \n\n$fromTo \n\n$appDescription \n\n$mainResponsibilities"
+            val output = "$companyName \n$role \n$fromTo \n\n$appDescription \n\n$mainResponsibilities"
             (workList as ArrayList).add(output)
         }
         

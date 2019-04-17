@@ -3,7 +3,6 @@ package com.pixelart.cvappchallenge.model
 import com.google.gson.annotations.SerializedName
 
 data class Cv(
-    val address: Address,
     val education: List<String>,
     val email: String,
     @SerializedName("experience_summary")
