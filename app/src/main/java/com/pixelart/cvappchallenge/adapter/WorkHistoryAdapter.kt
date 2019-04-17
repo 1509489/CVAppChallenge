@@ -1,7 +1,6 @@
 package com.pixelart.cvappchallenge.adapter
 
 import android.annotation.SuppressLint
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,12 +14,10 @@ import com.pixelart.cvappchallenge.common.GlideApp
 import com.pixelart.cvappchallenge.model.WorkHistory
 
 class WorkHistoryAdapter: ListAdapter<WorkHistory, WorkHistoryAdapter.ViewHolder>(diffUtil) {
-    private lateinit var context: Context
     
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        context = parent.context
-        val view = LayoutInflater.from(context).inflate(R.layout.workhistory_rv_layout, parent, false)
-        return ViewHolder(view, context)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.workhistory_rv_layout, parent, false)
+        return ViewHolder(view)
     }
     
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -28,7 +25,7 @@ class WorkHistoryAdapter: ListAdapter<WorkHistory, WorkHistoryAdapter.ViewHolder
         holder.setContent(workHistory)
     }
     
-    class ViewHolder(view: View, private val context: Context): RecyclerView.ViewHolder(view) {
+    class ViewHolder(private val view: View): RecyclerView.ViewHolder(view) {
         private val companyName: TextView = view.findViewById(R.id.tvComapanyName)
         private val role: TextView = view.findViewById(R.id.tvRole)
         private val fromTo:TextView = view.findViewById(R.id.tvFromTo)
@@ -44,7 +41,7 @@ class WorkHistoryAdapter: ListAdapter<WorkHistory, WorkHistoryAdapter.ViewHolder
             appDescription.text = workHistory.appDescription
             responsibilities.text = workHistory.mainResponsibilities.joinToString("\n\u2022", "\u2022", "",-1, "")
 
-            GlideApp.with(context)
+            GlideApp.with(view.context)
                 .load(workHistory.logo)
                 .into(icon)
         }

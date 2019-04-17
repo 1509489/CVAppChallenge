@@ -17,7 +17,6 @@ class HomePresenter @Inject constructor(private val view: HomeContract.View, pri
             networkService.getCV()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .toObservable()
                 .subscribe({response -> initCV(response)}, {error -> error?.message?.let { view.showError(it) } })
         )
     }

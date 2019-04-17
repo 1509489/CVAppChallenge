@@ -51,7 +51,7 @@ class HomePresenterTest {
     fun getCV() {
         whenever(networkService.getCV()).thenReturn(Single.just(cv))
         presenter.getCV()
-        verify(view).showCVDetail(anyString(), anyString(), anyString(), anyString(), anyString(), anyString(), anyString())
+        verify(view).showCVDetail(anyString(), anyString(), anyString(), anyString(), anyString(), anyString())
     }
 
     @Test
